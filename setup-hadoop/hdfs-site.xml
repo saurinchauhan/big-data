@@ -19,23 +19,23 @@
 <configuration>
 	  <property>
         <name>dfs.replication</name>
-        <value>3</value>
+        <value>1</value>
     </property>
     <property>
         <name>dfs.name.dir</name>
-        <value>file:///data/hadoop-data/nn</value>
+        <value>file:///home/hduser/data/nn</value>
     </property>
     <property>
         <name>dfs.data.dir</name>
-        <value>file:///data/hadoop-data/dn</value>
+        <value>file:///home/hduser/data/dn</value>
     </property>
     <property>
         <name>dfs.namenode.checkpoint.dir</name>
-        <value>file:///data/hadoop-data/snn</value>
+        <value>file:///home/hduser/data/snn</value>
     </property>
 	<property>
 		<name>dfs.datanode.data.dir</name>
-		<value>file:///data/hadoop-data/dn</value>
+		<value>file:///home/hduser/data/dn</value>
 	</property>
 
 </configuration>

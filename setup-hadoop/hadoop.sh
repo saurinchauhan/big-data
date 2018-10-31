@@ -42,7 +42,7 @@
 add_env_var_to_bashrc() {
 	if [ ! 'grep "### HADOOP" ~/.bashrc' ]; then
         	echo "### HADOOP Variables ###" >> ~/.bashrc
-       		echo "export HADOOP_HOME=/opt/hadoop-2.8.5" >> ~/.bashrc
+       		echo "export HADOOP_HOME=/home/hduser/hadoop" >> ~/.bashrc
         	echo "export HADOOP_INSTALL=\$HADOOP_HOME" >> ~/.bashrc
         	echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> ~/.bashrc
         	echo "export HADOOP_COMMON_HOME=\$HADOOP_HOME" >> ~/.bashrc
@@ -62,11 +62,11 @@ add_env_var_to_bashrc() {
 }
 
 cerate_data_dir() {
-        mkdir -p /data/hadoop-data/nn
-        mkdir -p /data/hadoop-data/snn
-        mkdir -p /data/hadoop-data/dn
-        mkdir -p /data/hadoop-data/mapred/system
-        mkdir -p /data/hadoop-data/mapred/local
+        mkdir -p ~/data/nn
+        mkdir -p ~/data/snn
+        mkdir -p ~/data/dn
+        mkdir -p ~/data/mapred/system
+        mkdir -p ~/data/mapred/local
 }
 
 setup_config_xml() {
@@ -76,7 +76,7 @@ setup_config_xml() {
 
 
 
-if [ -e /opt/hadoop-2.8.5 ]; then
+if [ -e ~/hadoop ]; then
         echo "Adding environment variables"
         add_env_var_to_bashrc
 
