@@ -6,7 +6,7 @@ wget http://mirrors.estointernet.in/apache/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2
 ##	http://archive.apache.org/dist/sqoop/1.4.5/sqoop-1.4.5.bin__hadoop-0.20.tar.gz
 
 tar -xzvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
-mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop-1
+mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop
 
 
 # export to .bashrc
