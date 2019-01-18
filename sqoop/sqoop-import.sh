@@ -8,7 +8,7 @@
 # 
 ##
 
-sqoop import --connect jdbc:mysql://localhost:3306/saurin \
+sqoop import --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -17,7 +17,7 @@ sqoop import --connect jdbc:mysql://localhost:3306/saurin \
  
 ## sqoop-import target directory
 
-sqoop import --connect jdbc:mysql://localhost:3306/saurin \
+sqoop import --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -25,7 +25,7 @@ sqoop import --connect jdbc:mysql://localhost:3306/saurin \
 
 ## --delete-target-dir :- will remove target dir. if already exists
 
-sqoop import --connect jdbc:mysql://localhost:3306/saurin \
+sqoop import --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -39,7 +39,7 @@ sqoop import --connect jdbc:mysql://localhost:3306/saurin \
 #	should not have null values
 ##
  
-sqoop import --connect jdbc:mysql://localhost:3306/saurin \
+sqoop import --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies_nopk \
@@ -52,7 +52,7 @@ sqoop import --connect jdbc:mysql://localhost:3306/saurin \
  
 sqoop import \
  -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies_nopk \
@@ -64,7 +64,7 @@ sqoop import \
  #
 sqoop import \
  -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies_nopk \
@@ -74,7 +74,7 @@ sqoop import \
  
 ## sqoop-import warehouse directory
 
-sqoop import --connect jdbc:mysql://localhost:3306/saurin \
+sqoop import --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -87,7 +87,7 @@ sqoop import --connect jdbc:mysql://localhost:3306/saurin \
 
 ## --append :- appends data into existing directory
  
-sqoop import --connect jdbc:mysql://localhost:3306/saurin \
+sqoop import --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -99,7 +99,7 @@ sqoop import --connect jdbc:mysql://localhost:3306/saurin \
 #	--as-textfile	Imports data as plain text (default)
 
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -109,7 +109,7 @@ sqoop import \
 #	--as-avrodatafile	Imports data to Avro Data Files
 
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -120,7 +120,7 @@ sqoop import \
 #	--as-sequencefile	Imports data to SequenceFiles
 
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -131,7 +131,7 @@ sqoop import \
 #	--as-parquetfile	Imports data to Parquet Files
 
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -144,7 +144,7 @@ sqoop import \
 # this will take default compression algorithm as gzip
 
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -154,7 +154,7 @@ sqoop import \
  ## --compress-codec:- to use different algorithm for compression other than gzip
  #	You must enable snappycodec from configuration to enable below command
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -167,7 +167,7 @@ sqoop import \
  # --boundary-query :- used to select data from within specific range/boundary of data
  
  sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -181,7 +181,7 @@ sqoop import \
  
  
 sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -199,14 +199,14 @@ sqoop import \
  
  
  sqoop import \
- --connect jdbc:mysql://localhost:3306/saurin \
+ --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --target-dir movies/query \
  --query "SELECT m.name,r.rating,r.userid from movie_ratings r join movies m on r.movieId = m.movieId and \$CONDITIONS where 1=1" \
  --split-by userid
  
-####	Delimeters :: important for exam
+####	Delimeters :: 
 #--fields-terminated-by :- to specify delimeter after each fields-terminated-by
 #--lines-terminated-by :- to specify delimeter after  each lines-terminated-by
 #--enclosed-by :- to enclose every field value i.e to enclose with double-quote ""
@@ -220,7 +220,7 @@ sqoop import \
 ####
 
  sqoop import \
-  --connect jdbc:mysql://localhost:3306/saurin \
+  --connect jdbc:mysql://localhost/saurin \
   --username root \
   --password root \
   --table movies \
@@ -232,7 +232,7 @@ sqoop import \
  
  ####	Handling null
  sqoop import \
-  --connect jdbc:mysql://localhost:3306/saurin \
+  --connect jdbc:mysql://localhost/saurin \
   --username root \
   --password root \
   --table movies \
@@ -240,43 +240,123 @@ sqoop import \
   --null-non-string -1
  
  ####	Incremental loads
+ ## incremental import arguments
+ --check-column			=>	Specifies the column to be examined when determining which rows to import 
+ --incremental (mode)	=>	Mode = append / lastmodified
+ --last-value (value)	=>	specify maximum value of check-column from previous import
  
- 
- 
- ####	Hive import
- ## default behaviour is every time below command is run it will append entire  table with existing data
- ## to view hive table describe formatted <table-name>
- 
- 
+ ## prerequisites
  sqoop import \
-  --connect jdbc:mysql://localhost:3306/retail_db \
+  --connect jdbc:mysql://localhost/retail_db \
   --username root \
   --password cloudera \
-  --table categories \
-  --hive-import \
-  --hive-database retail_db \
-  --hive-table categories \
-  -m 2
+  --query "select * from orders where order_id<100 and \$CONDITIONS"
+  --target-dir /temp/orders \
+  -m 1
+ ## END
  
-  ## overwrite existing table
-  # --hive-overwrite :- will delete existing table and recreate new table with all the data
+# incremental commnad with --incremental append
+sqoop import \
+ --connect jdbc:mysql://localhost/retail_db \
+ --username root \
+ --password cloudera \
+ --table orders \
+ --target-dir /temp/orders \
+ --incremental append \
+ --check-column order_id \
+ --last-value 100
+
+# incremental commnad with --incremental lastmodified
+
+ ## prerequisites
+sqoop import \
+  --connect jdbc:mysql://localhost/retail_db \
+  --username root \
+  --password cloudera \
+  --query "select * from orders where order_id<100 and \$CONDITIONS" \
+  --target-dir /temp/orders_with_date \
+  -m 1
+ ## END
+
+sqoop import \
+ --connect jdbc:mysql://localhost/retail_db \
+ --username root \
+ --password cloudera \
+ --table orders \
+ --target-dir /temp/orders_with_date \
+ --incremental lastmodified \
+ --check-column order_date \
+ --last-value 2013-07-25 \
+ --merge-key order_id	#	merge-key is required with --incremental lastmodified
+ 
+ 
+ 
+ ##	CREATE SQOOP JOB
+ 
+ 
+## prerequisites
+sqoop import \
+  --connect jdbc:mysql://localhost/retail_db \
+  --username root \
+  --password cloudera \
+  --query "select * from orders where order_id<100 and \$CONDITIONS" \
+  --target-dir /temp/orders_job \
+  -m 1
+ ## END
+ 
+sqoop job \
+ --create job1 \
+ -- import \
+ --connect jdbc:mysql://localhost/retail_db \
+ --username root \
+ --password cloudera \
+ --table orders \
+ --target-dir /temp/orders_job \
+ --incremental append \
+ --check-column customer_id \
+ --last-value 0
+ 
+# execute job, needs password
+ sqoop job --exec job1
+ 
+ # delete job
+ sqoop job --delete job1
+ 
+####	Hive import
+## default behaviour is every time below command is run it will append entire  table with existing data
+## to view hive table describe formatted <table-name>
+ 
+sqoop import \
+ --connect jdbc:mysql://localhost/retail_db \
+ --username root \
+ --password cloudera \
+ --table categories \
+ --hive-import \
+ --hive-database retail_db \
+ --hive-table categories \
+ -m 1
+ 
+## overwrite existing table
+# --hive-overwrite :- will delete existing table and recreate new table with all the data
   
- sqoop import \
-  --connect jdbc:mysql://localhost:3306/retail_db \
-  --username root \
-  --password cloudera \
-  --table categories \
-  --hive-import \
-  --hive-database retail_db \
-  --hive-table categories \
-  --hive-overwrite \
-  -m 2
+sqoop import \
+ --connect jdbc:mysql://localhost/retail_db \
+ --username root \
+ --password cloudera \
+ --table categories \
+ --hive-import \
+ --hive-database retail_db \
+ --hive-table categories \
+ --hive-overwrite \
+ -m 1
+ 
+  
  
  ##	fail import if table is already created  in Hive
  # --create-hive-table :- this is mutually exclusive with --hive-overwrite
  
  sqoop import \
-  --connect jdbc:mysql://localhost:3306/retail_db \
+  --connect jdbc:mysql://localhost/retail_db \
   --username root \
   --password cloudera \
   --table categories \
@@ -284,13 +364,13 @@ sqoop import \
   --hive-database retail_db \
   --hive-table categories \
   --create-hive-table \
-  -m 2 
+  -m 1 
  
  ## specify data type of each column
  # --map-column-hive <map> :- override default mapping from sql type to Hive type for configured columns
  
 sqoop import \
-  --connect jdbc:mysql://localhost:3306/retail_db \
+  --connect jdbc:mysql://localhost/retail_db \
   --username root \
   --password cloudera \
   --table categories \
@@ -298,16 +378,16 @@ sqoop import \
   --hive-database retail_db_custom \
   --hive-table categories_custom \
   --map-column-hive category_id=string,category_department_id=string \
-  -m 2
+  -m 1
 
   
 sqoop import \
-  --connect jdbc:mysql://localhost:3306/retail_db \
+  --connect jdbc:mysql://localhost/retail_db \
   --username root \
   --password cloudera \
   --hive-import \
   --hive-database retail_db_all \
-  -m 2
+  -m 1
   
   
 #### import all tables
@@ -316,7 +396,7 @@ sqoop import \
 # --autoreset-to-one-mapper : advisable to use in case of a table without primary key  
   
 sqoop import-all-tables \
- --connect jdbc:mysql://localhost:3306/retail_db \
+ --connect jdbc:mysql://localhost/retail_db \
  --username root \
  --password cloudera \
  --warehouse-dir /all/retail_db \

@@ -12,7 +12,7 @@
 #
 ##
 
-sqoop export --connect jdbc:mysql://localhost:3306/saurin \
+sqoop export --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movies \
@@ -22,7 +22,7 @@ sqoop export --connect jdbc:mysql://localhost:3306/saurin \
 
  
  ## CREATE TABLE movie_ratings (userId INT, movieId INT, rating INT, timings VARCHAR(100));
-sqoop export --connect jdbc:mysql://localhost:3306/saurin \
+sqoop export --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table movie_ratings \
@@ -32,7 +32,7 @@ sqoop export --connect jdbc:mysql://localhost:3306/saurin \
  -m 1
  
  ## CREATE TABLE users(userid INT, age INT, gender VARCHAR(100), job VARCHAR(100),timings VARCHAR(100));
- sqoop export --connect jdbc:mysql://localhost:3306/saurin \
+ sqoop export --connect jdbc:mysql://localhost/saurin \
  --username root \
  --password root \
  --table users \
@@ -48,7 +48,7 @@ sqoop export --connect jdbc:mysql://localhost:3306/saurin \
  ## export
  
  sqoop export \
-  --connect jdbc:mysql://localhost:3306/retail_db_export \
+  --connect jdbc:mysql://localhost/retail_db_export \
   --username root \
   --password cloudera \
   --export-dir /user/hive/warehouse/retail_db.db/categories \
@@ -58,7 +58,7 @@ sqoop export --connect jdbc:mysql://localhost:3306/saurin \
   
  ## columns
 sqoop export \
- --connect jdbc:mysql://localhost:3306/retail_db_export \
+ --connect jdbc:mysql://localhost/retail_db_export \
  --username root \
  --password cloudera \
  --export-dir /user/hive/warehouse/retail_db.db/categories \
@@ -73,7 +73,7 @@ sqoop export \
  #
  
  sqoop export \
- --connect jdbc:mysql://localhost:3306/retail_db_export \
+ --connect jdbc:mysql://localhost/retail_db_export \
  --username root \
  --password cloudera \
  --export-dir /user/hive/warehouse/retail_db.db/categories \
@@ -107,7 +107,7 @@ sqoop export \
 #	Below command is not working with stored procedure
 
 sqoop export \
- --connect jdbc:mysql://localhost:3306/retail_db \
+ --connect jdbc:mysql://localhost/retail_db \
  --username root \
  --password cloudera \
  --export-dir /all/retail_db/order_items \
@@ -134,7 +134,7 @@ sqoop export \
 
 
 sqoop export \
- --connect jdbc:mysql://localhost:3306/retail_db \
+ --connect jdbc:mysql://localhost/retail_db \
  --username root \
  --password cloudera \
  --export-dir /all/retail_db/order_items \
@@ -154,7 +154,7 @@ sqoop export \
 
 
 sqoop export \
- --connect jdbc:mysql://localhost:3306/retail_db_update \
+ --connect jdbc:mysql://localhost/retail_db_update \
  --username root \
  --password cloudera \
  --export-dir /all/retail_db/categories \
@@ -162,12 +162,20 @@ sqoop export \
 
 
 sqoop export \
- --connect jdbc:mysql://localhost:3306/retail_db_update \
+ --connect jdbc:mysql://localhost/retail_db_update \
  --username root \
  --password cloudera \
  --export-dir /all/retail_db/categories \
  --table categories \
  --fields-terminated-by "," \
  --update-key category_id
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
