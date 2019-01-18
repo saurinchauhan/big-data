@@ -241,9 +241,9 @@ sqoop import \
  
  ####	Incremental loads
  ## incremental import arguments
- --check-column			=>	Specifies the column to be examined when determining which rows to import 
- --incremental (mode)	=>	Mode = append / lastmodified
- --last-value (value)	=>	specify maximum value of check-column from previous import
+ #  --check-column			=>	Specifies the column to be examined when determining which rows to import 
+ #  --incremental (mode)	=>	Mode = append / lastmodified
+ #  --last-value (value)	=>	specify maximum value of check-column from previous import
  
  ## prerequisites
  sqoop import \
