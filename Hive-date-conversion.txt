@@ -1,0 +1,11 @@
+Hive date conversion
+
+Hive:
+-> unix_timestamp() -> gives unixtimestamp
+-> from_unixtime(unix_timestamp()) -> converts unix timestamp into date
+-> date_format(from_unixtime(unix_timestamp()),'yyyyMMdd') -> converts date into date format same as given second argument
+-> unix_timestamp(date_format(from_unixtime(unix_timestamp()),'yyyyMMdd'),'yyyyMMdd') -> converts date with format into unix timestamp
+-> unix_timestamp(from_unixtime(unix_timestamp())) -> converts date into unix timestamp
+
+
+
